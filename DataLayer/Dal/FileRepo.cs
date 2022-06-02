@@ -1,22 +1,42 @@
 ﻿using DataLayer.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataLayer.Dal
 {
-    internal class FileRepo : IRepo
+    public class FileRepo : IRepo<Settings>
     {
-        public IList<Player> Load(string Path)
+        public IList<Settings> Load(string Path)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string[] lines = File.ReadAllLines(Path);
+                IList<Settings> list = new List<Settings>();
+                lines.ToList().ForEach(l => list.Add(Settings.Parse(l)));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
-        public void Save(string Path, IList<Player> players)
+        public void Save(string Path, IList<Settings> settings)
         {
-            throw new NotImplementedException();
+            try
+            {
+                File.WriteAllLines(Path, settings.Select(s => Settings.PrepareForFile(s)));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

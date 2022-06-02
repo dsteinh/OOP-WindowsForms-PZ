@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Dal
 {
-    public interface IRepo
+    public interface IRepo<T>
     {
-        IList<Player> Load(string Path);
-        void Save(string Path, IList<Player> players);
+        IList<T> Load(string Path);
+        void Save(string Path, IList<T> data);
     }
 }

@@ -17,7 +17,7 @@ namespace DataLayer.Dal
 
         public static List<T> GetApiDataSet(string path)
         {
-            Type type = typeof(T);
+
 
             string json = new WebClient().DownloadString(path);
             list = JsonConvert.DeserializeObject<List<T>>(json);
