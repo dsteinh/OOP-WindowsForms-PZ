@@ -8,6 +8,6 @@ namespace DataLayer.Dal
 {
     public interface IParsable
     {
-        object Parse(string s);
+         T Parse<T>(string path);
     }
 }

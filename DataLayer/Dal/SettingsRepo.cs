@@ -8,7 +8,19 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Dal
 {
-    public class FileRepo : IRepo<Settings>
+    //Ideja : napravi IFileable
+    //Postavi sve sto zelis da se sprema sprema i loada da je IFileable
+    //U taj interface stavi Parse i PrepareForFile metode
+    //Napravi da FileRepo radi sa IFileableima
+
+
+
+
+
+
+
+
+    public class SettingsRepo : IRepo<Settings>
     {
         public IList<Settings> Load(string Path)
         {

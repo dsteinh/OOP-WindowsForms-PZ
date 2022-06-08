@@ -16,7 +16,7 @@ namespace DataLayer.Model
         CRO,
         ENG
     }
-    public class Settings : 
+    public class Settings
     {
         private const char Del = ';';
         public Gender TeamsGender { get; set; }

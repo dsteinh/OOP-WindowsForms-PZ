@@ -68,7 +68,7 @@ namespace UserInterface
             try
             {
                 UpdateSettings();
-                apiHelper.SaveModel(settings, ApiHelper.SettingsPath);
+                apiHelper.SaveSettings(settings, ApiHelper.SettingsPath);
                 MainForm owner = (MainForm)this.Owner;
                 //ComboBox comboBox = new ComboBox();
                 //Control.ControlCollection controls = owner.Controls;

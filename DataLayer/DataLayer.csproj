@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\ApiLoader.cs" />
-    <Compile Include="Dal\FileRepo.cs" />
+    <Compile Include="Dal\PlayerRepo.cs" />
+    <Compile Include="Dal\TeamRepo.cs" />
+    <Compile Include="Dal\SettingsRepo.cs" />
     <Compile Include="Dal\IParsable.cs" />
     <Compile Include="Dal\IRepo.cs" />
     <Compile Include="ApiHelper.cs" />

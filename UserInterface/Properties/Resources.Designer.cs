@@ -73,6 +73,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dres {
+            get {
+                object obj = ResourceManager.GetObject("dres", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dres1 {
+            get {
+                object obj = ResourceManager.GetObject("dres1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap eng {
             get {
                 object obj = ResourceManager.GetObject("eng", resourceCulture);
@@ -86,6 +106,26 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap indeksiraj {
             get {
                 object obj = ResourceManager.GetObject("indeksiraj", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap prazna_zvijezda {
+            get {
+                object obj = ResourceManager.GetObject("prazna_zvijezda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap puna_zvijezda {
+            get {
+                object obj = ResourceManager.GetObject("puna_zvijezda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

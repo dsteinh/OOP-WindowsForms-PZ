@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FavoritePlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FavoritePlayersForm.Designer.cs">
+      <DependentUpon>FavoritePlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User controls\PlayerTile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\PlayerTile.Designer.cs">
+      <DependentUpon>PlayerTile.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FavoritePlayersForm.resx">
+      <DependentUpon>FavoritePlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -70,6 +85,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\PlayerTile.resx">
+      <DependentUpon>PlayerTile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,6 +130,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prazna_zvijezda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dres.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\puna_zvijezda.png" />
+    <None Include="Resources\puna_zvijezda1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

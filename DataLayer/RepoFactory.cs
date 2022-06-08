@@ -9,7 +9,9 @@ namespace DataLayer
 {
     public static class RepoFactory 
     {
-        public static IRepo<T> GetRepo<T>() => (IRepo<T>) new FileRepo();
-        
+        public static IRepo<T> GetSettRepo<T>() => (IRepo<T>) new SettingsRepo();
+        public static IRepo<T> GetTeamRepo<T>() => (IRepo<T>) new TeamRepo();
+
+        public static IRepo<T> GetPlayerRepo<T>() => (IRepo<T>) new PlayerRepo();
     }
 }
