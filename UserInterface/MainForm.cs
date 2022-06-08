@@ -33,15 +33,16 @@ namespace UserInterface
             InitBackGroundWorker();
             LoadTeam();
 
-            ShowTeams();
-            InitPlayers();
-            ShowPlayers();
+            //ShowTeams();
+            //InitPlayers();
+            //ShowPlayers();
 
-            //bkgWorker.RunWorkerAsync();
+            bkgWorker.RunWorkerAsync();
         }
 
         public void ShowPlayers()
         {
+
             foreach (Player p in ApiHelper.AllPlayers)
             {
                 pnlIgraci.Controls.Add(new PlayerTile
@@ -53,6 +54,8 @@ namespace UserInterface
                     IsFavorite = false
                 });
             }
+            
+
         }
 
         private void InitBackGroundWorker()
@@ -154,14 +157,16 @@ namespace UserInterface
             Team team = cb.SelectedItem as Team;
             apiHelper.SaveTeam(team, ApiHelper.FavoriteTeamPath);
             this.Controls.Clear();
-            ApiHelper.FavoritePlayers.Clear();
-            InitializeAll();
 
+            InitializeAll();
+            ApiHelper.FavoritePlayers.Clear();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-           
+            IList<Player> players = apiHelper.LoadFavoritePlayers();
+            ApiHelper.FavoritePlayers = players;
 
         }
 
@@ -173,11 +178,12 @@ namespace UserInterface
 
         private void OpenFavoritePlayers_Click(object sender, EventArgs e)
         {
-            
+
             FavoritePlayersForm favoritePlayersForm = new FavoritePlayersForm();
             favoritePlayersForm.Show(this);
             button1.Enabled = false;
-            favoritePlayersForm.FormClosing += new FormClosingEventHandler(favoritePlayersForm.MyMainForm_FormClosing);
+            cbTeams.Enabled = false;
+           favoritePlayersForm.FormClosing += new FormClosingEventHandler(favoritePlayersForm.MyMainForm_FormClosing);
         }
     }
 }

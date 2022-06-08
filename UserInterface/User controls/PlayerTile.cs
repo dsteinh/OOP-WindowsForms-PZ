@@ -50,7 +50,10 @@ namespace UserInterface.User_controls
         private void imgFavorite_Click(object sender, EventArgs e)
         {
 
+
             ToggleFavorite(sender);
+
+
 
             FormCollection openForms = Application.OpenForms;
             //openForms.OfType<FavoritePlayersForm>();
@@ -58,13 +61,10 @@ namespace UserInterface.User_controls
             {
                 if (form.Name == "FavoritePlayersForm")
                 {
+
                     FavoritePlayersForm favoritePlayersForm = form as FavoritePlayersForm;
-                    
-                    favoritePlayersForm.Load += new EventHandler(favoritePlayersForm.FavoritePlayersForm_Load);
-                    foreach (Control c in favoritePlayersForm.Controls)
-                    {
-                        c.Refresh();
-                    }
+                    favoritePlayersForm.Controls.Find("pnlOmiljeniIgraci", true)[0].Controls.Clear();
+                    favoritePlayersForm.InitializeAll();
 
                 }
             }
@@ -73,33 +73,30 @@ namespace UserInterface.User_controls
         private void ToggleFavorite(object sender)
         {
 
-            Control control = sender as Control;
+            PictureBox control = sender as PictureBox;
             PlayerTile parent = (PlayerTile)control.Parent;
+            //PictureBox favImg = (PictureBox)parent.Controls.Find("imgFavorite", false)[0];
             //MainForm mainForm = (MainForm)parent.Owner;
 
-
-            if (parent.IsFavorite)
+            //control.Controls.Clear();
+            if (!parent.IsFavorite)
+            {
+                AddFavorite(parent);
+                parent.IsFavorite = true;
+                parent.Refresh();
+            }
+            else
             {
                 RemoveFavorite(parent);
                 parent.IsFavorite = false;
                 parent.Refresh();
-                return;
             }
-            bool ok = AddFavorite(parent);
 
-            if (ok)
-            {
-                parent.IsFavorite = true;
-                parent.imgFavorite.Image = Properties.Resources.puna_zvijezda;
-                //parent.Visible = false;
-                parent.Refresh();
-
-            }
         }
 
-        private bool AddFavorite(PlayerTile parent)
+        private void AddFavorite(PlayerTile parent)
         {
-            return apiHelper.AddPlayerToFavorites(new Player
+            bool ok = apiHelper.AddPlayerToFavorites(new Player
             {
                 Name = parent.lblImeIgraca.Text,
 
@@ -107,6 +104,11 @@ namespace UserInterface.User_controls
                 Captain = parent.lblKapetan.Text == "K",
                 ShirtNumber = parent.lblBrojDresa.Text
             });
+            if (ok)
+            {
+                parent.imgFavorite.Image = Properties.Resources.puna_zvijezda;
+
+            }
         }
 
         private void RemoveFavorite(PlayerTile parent)

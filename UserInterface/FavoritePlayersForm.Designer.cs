@@ -59,7 +59,6 @@
             this.Controls.Add(this.pnlOmiljeniIgraci);
             this.Name = "FavoritePlayersForm";
             this.Text = "FavoritePlayersForm";
-            this.Load += new System.EventHandler(this.FavoritePlayersForm_Load);
             this.ResumeLayout(false);
 
         }

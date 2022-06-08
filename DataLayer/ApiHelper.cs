@@ -34,7 +34,7 @@ namespace DataLayer
         List<Match> matches;
 
 
-        public static IList<Player> FavoritePlayers = new List<Player>();
+        //public static IList<Player> FavoritePlayers = new List<Player>();
         public static IList<Player> AllPlayers = new List<Player>();
         public static string SettingsPath => SettPath;
 

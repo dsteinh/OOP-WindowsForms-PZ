@@ -19,10 +19,12 @@ namespace UserInterface
         public FavoritePlayersForm()
         {
             InitializeComponent();
+            InitializeAll();
         }
-        public void FavoritePlayersForm_Load(object sender, EventArgs e)
+
+        public void InitializeAll()
         {
-            //ApiHelper.FavoritePlayers = (List<Player>)apiHelper.LoadFavoritePlayers();
+
             ApiHelper.FavoritePlayers.ToList().ForEach(x => pnlOmiljeniIgraci.Controls.Add(new PlayerTile
             {
                 PlayerName = x.Name,
@@ -30,10 +32,15 @@ namespace UserInterface
                 Position = x.Position.ToString(),
                 IsCapetan = x.Captain,
                 IsFavorite = x.IsFavorite,
-                //IsReadOnly = true
+                IsReadOnly = true
             }));
-            
+            foreach (Control c in pnlOmiljeniIgraci.Controls)
+            {
+                c.Refresh();
+            }
         }
+
+
 
         internal void MyMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -41,7 +48,9 @@ namespace UserInterface
             MainForm owner = control.Owner as MainForm;
             Control[] controls = owner.Controls.Find("button1", true);
             controls[0].Enabled = true;
-            
+            controls = owner.Controls.Find("cbTeams", true);
+            controls[0].Enabled = true;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
