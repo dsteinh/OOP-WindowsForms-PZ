@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{4F7D2EA5-9D33-40C1-92A8-BEBAFF8A4498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{293EB9DD-A53F-4042-9979-104BD53DDA27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms", "UserInterface\WinForms.csproj", "{293EB9DD-A53F-4042-9979-104BD53DDA27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Projekt", "WPF-Projekt\WPF-Projekt.csproj", "{A3341D09-DC40-48F5-BC17-2C6C1410F49A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{293EB9DD-A53F-4042-9979-104BD53DDA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{293EB9DD-A53F-4042-9979-104BD53DDA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{293EB9DD-A53F-4042-9979-104BD53DDA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3341D09-DC40-48F5-BC17-2C6C1410F49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3341D09-DC40-48F5-BC17-2C6C1410F49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3341D09-DC40-48F5-BC17-2C6C1410F49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3341D09-DC40-48F5-BC17-2C6C1410F49A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

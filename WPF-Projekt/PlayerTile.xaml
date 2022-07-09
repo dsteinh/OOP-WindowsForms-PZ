@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WPF_Projekt.PlayerTile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Projekt"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="100" Loaded="UserControl_Loaded"
+             HorizontalAlignment="Stretch"
+             Margin="4"
+             MouseDown="UserControl_MouseDown">
+
+    <Grid>
+        <!--<StackPanel Orientation="Vertical" >-->
+
+        <Image x:Name="imgPlayer" Width="100" Source="/Jersey.png"/>
+        <TextBlock  x:Name="lblPlayerNumber" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="White">
+            <TextBlock.Effect>
+                <DropShadowEffect
+                    ShadowDepth="5"
+                    Direction="330"
+                    Color="Black"
+                    Opacity="0.5"
+                    BlurRadius="4"/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="lblName" FontSize="11" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White">
+            Name LastName
+            <TextBlock.Effect>
+                <DropShadowEffect
+                    ShadowDepth="5"
+                    Direction="330"
+                    Color="Black"
+                    Opacity="0.5"
+                    BlurRadius="4"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <!--</StackPanel>-->
+    </Grid>
+</UserControl>

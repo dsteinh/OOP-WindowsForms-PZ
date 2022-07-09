@@ -20,6 +20,7 @@ namespace UserInterface.User_controls
         public bool IsCapetan { get; set; }
         public bool IsFavorite { get; set; }
         public bool IsReadOnly { get; set; } = false;
+        public bool IsSelected { get; set; } = false;
 
         ApiHelper apiHelper = new ApiHelper();
         public PlayerTile()
@@ -53,8 +54,11 @@ namespace UserInterface.User_controls
 
             ToggleFavorite(sender);
 
+            RefreshFavoritePlayers();
+        }
 
-
+        private static void RefreshFavoritePlayers()
+        {
             FormCollection openForms = Application.OpenForms;
             //openForms.OfType<FavoritePlayersForm>();
             foreach (Form form in openForms)
@@ -94,7 +98,7 @@ namespace UserInterface.User_controls
 
         }
 
-        private void AddFavorite(PlayerTile parent)
+        public void AddFavorite(PlayerTile parent)
         {
             bool ok = apiHelper.AddPlayerToFavorites(new Player
             {
@@ -127,5 +131,21 @@ namespace UserInterface.User_controls
 
         }
 
+        private void lblBrojDresa_MouseDown(object sender, MouseEventArgs e)
+        {
+           StartDnD(this);
+        }
+
+        private void StartDnD(PlayerTile playerTile)
+        {
+            if (!playerTile.IsFavorite)
+            {
+                playerTile.IsSelected = true;
+                playerTile.DoDragDrop(playerTile, DragDropEffects.Move);
+                playerTile.IsSelected = false;
+                RefreshFavoritePlayers();
+            }
+
+        }
     }
 }

@@ -1,0 +1,66 @@
+﻿<Window x:Class="WPF_Projekt.TeamStats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Projekt"
+        mc:Ignorable="d"
+        Title="TeamStats" Height="480" Width="640"
+        x:Name="myWindow"
+        Loaded="Window_Loaded">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Storyboard.TargetName="myWindow" 
+                        Storyboard.TargetProperty="Height"
+                        From="0.0" To="480" Duration="0:0:5" 
+                        AutoReverse="False"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="lblTeamName" Grid.Column="1" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+        <Label x:Name="lblFifaCode" Grid.Column="1" Grid.Row="1" Content="CODE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" FontWeight="Bold"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblSumOfMatches" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/MatchesPlayed.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblSumOfWins" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/Win.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblSumOfLosses" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/Lose.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblSumOfGoalsTaken" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/TheyScore.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblGoalDifference" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/Difference.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label x:Name="lblGoalsScored" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Image Source="/Score.png" Width="35" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

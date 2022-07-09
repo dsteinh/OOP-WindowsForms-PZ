@@ -113,6 +113,26 @@ namespace UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ljudi {
+            get {
+                object obj = ResourceManager.GetObject("ljudi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lopta {
+            get {
+                object obj = ResourceManager.GetObject("lopta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap prazna_zvijezda {
             get {
                 object obj = ResourceManager.GetObject("prazna_zvijezda", resourceCulture);
@@ -146,6 +166,16 @@ namespace UserInterface.Properties {
         internal static System.Drawing.Bitmap zena {
             get {
                 object obj = ResourceManager.GetObject("zena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZutiKarton {
+            get {
+                object obj = ResourceManager.GetObject("ZutiKarton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

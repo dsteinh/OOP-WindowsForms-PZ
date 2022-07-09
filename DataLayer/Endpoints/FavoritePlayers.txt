@@ -1,3 +1,2 @@
-Branislav IVANOVIC;False;6;True;Defender
-Nikola MILENKOVIC;False;15;True;Defender
-Luka MILIVOJEVIC;False;4;True;Midfield
+Makoto HASEBE;True;17;True;Midfield
+Naomichi UEDA;False;2;True;Defender

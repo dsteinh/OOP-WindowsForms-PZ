@@ -51,6 +51,7 @@
     <Compile Include="Dal\IParsable.cs" />
     <Compile Include="Dal\IRepo.cs" />
     <Compile Include="ApiHelper.cs" />
+    <Compile Include="Model\TeamEvent.cs" />
     <Compile Include="RepoFactory.cs" />
     <Compile Include="Model\Match.cs" />
     <Compile Include="Model\Player.cs" />

@@ -18,9 +18,9 @@ namespace UserInterface
 {
     public partial class MainForm : Form
     {
-        ApiHelper apiHelper = new ApiHelper();  
+        ApiHelper apiHelper = new ApiHelper();
         BackgroundWorker bkgWorker;
-        
+
         Team favoriteTeam;
         public MainForm()
         {
@@ -42,6 +42,9 @@ namespace UserInterface
 
         public void ShowPlayers()
         {
+            IList<Player> players = apiHelper.LoadFavoritePlayers();
+            ApiHelper.FavoritePlayers = players;
+            LoadIfFavorites();
 
             foreach (Player p in ApiHelper.AllPlayers)
             {
@@ -51,11 +54,23 @@ namespace UserInterface
                     Number = p.ShirtNumber.ToString(),
                     Position = p.Position.ToString(),
                     IsCapetan = p.Captain,
-                    IsFavorite = false
+                    IsFavorite = p.IsFavorite
                 });
-            }
-            
 
+            }
+
+
+            foreach (PlayerTile item in pnlIgraci.Controls)
+            {
+                item.MouseHover += Item_MouseHover;
+            }
+
+
+        }
+
+        private void Item_MouseHover(object sender, EventArgs e)
+        {
+            MessageBox.Show("Dodir");
         }
 
         private void InitBackGroundWorker()
@@ -72,7 +87,7 @@ namespace UserInterface
             {
                 ShowTeams();
                 InitPlayers();
-                
+
             }
             catch (Exception ex)
             {
@@ -89,6 +104,8 @@ namespace UserInterface
             try
             {
                 ApiHelper.AllPlayers = apiHelper.GetAllPlayers(favoriteTeam).ToList();
+                apiHelper.SetYellowCards();
+                apiHelper.SetGoals();
             }
             catch (Exception ex)
             {
@@ -108,13 +125,13 @@ namespace UserInterface
             catch (Exception ex)
             {
 
-               throw ex;
+                throw ex;
             }
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
+
             try
             {
                 Cursor = Cursors.Default;
@@ -123,7 +140,7 @@ namespace UserInterface
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message);;
+                MessageBox.Show(ex.Message); ;
             }
         }
 
@@ -147,7 +164,7 @@ namespace UserInterface
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.ShowDialog(this);
-            
+
 
         }
 
@@ -160,14 +177,28 @@ namespace UserInterface
 
             InitializeAll();
             ApiHelper.FavoritePlayers.Clear();
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            IList<Player> players = apiHelper.LoadFavoritePlayers();
-            ApiHelper.FavoritePlayers = players;
 
+        }
+
+        private void LoadIfFavorites()
+        {
+            IList<Player> test = ApiHelper.FavoritePlayers;
+            foreach (Player p in ApiHelper.AllPlayers)
+            {
+                foreach (Player pl in ApiHelper.FavoritePlayers)
+                {
+                    if (p.Name == pl.Name)
+                    {
+                        p.IsFavorite = true;
+                    }
+                }
+
+            }
         }
 
         private void LoadTeam()
@@ -183,7 +214,54 @@ namespace UserInterface
             favoritePlayersForm.Show(this);
             button1.Enabled = false;
             cbTeams.Enabled = false;
-           favoritePlayersForm.FormClosing += new FormClosingEventHandler(favoritePlayersForm.MyMainForm_FormClosing);
+            favoritePlayersForm.FormClosing += new FormClosingEventHandler(favoritePlayersForm.MyMainForm_FormClosing);
+            FlowLayoutPanel pnlOmiljeni = (FlowLayoutPanel)favoritePlayersForm.Controls.Find("pnlOmiljeniIgraci", true)[0];
+
+
+        }
+
+
+
+        private void ShowPlayerStatsList_Click(object sender, EventArgs e)
+        {
+            RankListForm rankListForm = new RankListForm();
+            rankListForm.ShowDialog(this);
+
+        }
+
+        private void ShowMatchStatsList_Click(object sender, EventArgs e)
+        {
+            MatchsListForm matchsListForm = new MatchsListForm();
+            matchsListForm.ShowDialog(this);
+        }
+
+        private void pnlIgraci_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void pnlIgraci_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void pnlZvijezde_DragDrop(object sender, DragEventArgs e)
+        {
+           
+            foreach (PlayerTile pt in pnlIgraci.Controls)
+            {
+                if (pt.IsSelected)
+                {
+                    pt.AddFavorite(pt);
+                    pt.IsFavorite = true;
+                }
+            }
+        }
+
+        private void pnlZvijezde_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+
         }
     }
 }

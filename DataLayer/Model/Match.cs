@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace DataLayer.Model
 {
@@ -27,6 +28,18 @@ namespace DataLayer.Model
 
         [JsonProperty("away_team_statistics")]
         public TeamStatistics AwayTeamStatistics { get; private set; }
+
+        [JsonProperty("home_team_events")]
+        public List<TeamEvent> HomeTeamEvents { get; set; }
+
+        [JsonProperty("away_team_events")]
+        public List<TeamEvent> AwayTeamEvents { get; set; }
+
+        [JsonProperty("winner")]
+        public string Winner { get; set; }
+
+        [JsonProperty("winner_code")]
+        public string WinnerCode { get; set; }
 
         public override string ToString() => $"{Venue}: \n{HomeTeamStatistics}";
     }

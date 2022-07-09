@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Model
 {
-    public enum Position { Defender, Forward, Goalie, Midfield };
+    public enum Position { Goalie, Defender, Midfield, Forward };
 
 
 
-    public class Player
+    public class Player //: IComparable<Player>
     {
         private const char Del = ';';
 
@@ -29,6 +29,8 @@ namespace DataLayer.Model
 
         public bool IsFavorite { get; set; }
 
+        public int YellowCards { get; set; }
+        public int Goals { get; set; }
 
 
         public override string ToString() => $"({Name}, Kapetan: {Captain}, NO. {ShirtNumber}, Pos. {Position})";
@@ -67,5 +69,9 @@ namespace DataLayer.Model
             Enum.TryParse(position, out Position pos);
             return pos;
         }
+
+       //public int CompareTo(Player other) => other.Goals.CompareTo(Goals);
+        
+        
     }
 }

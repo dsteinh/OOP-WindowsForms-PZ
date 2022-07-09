@@ -19,13 +19,13 @@ namespace DataLayer.Model
         public string Country { get; private set; }
 
         [JsonProperty("fifa_code")]
-        public string Code { get; private set; }
+        public string Code { get;  set; }
 
-        [JsonProperty("goals_for")]
+        [JsonProperty("goals")]
         public long Goals { get; private set; }
 
         [JsonProperty("code")]
-        public string CodeForCheck { get; private set; }
+        public string CodeForCheck { get; set; }
 
 
 

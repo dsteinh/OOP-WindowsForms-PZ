@@ -30,25 +30,31 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaIgračaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaUtakmiceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbTeams = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlIgraci = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbZ1 = new System.Windows.Forms.PictureBox();
+            this.pbZ2 = new System.Windows.Forms.PictureBox();
+            this.pbZ3 = new System.Windows.Forms.PictureBox();
+            this.pnlZvijezde = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ3)).BeginInit();
+            this.pnlZvijezde.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem});
+            this.settingsToolStripMenuItem,
+            this.listeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1207, 28);
@@ -58,9 +64,32 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.settingsToolStripMenuItem.Text = "Postavke";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // listeToolStripMenuItem
+            // 
+            this.listeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listaIgračaToolStripMenuItem,
+            this.listaUtakmiceToolStripMenuItem});
+            this.listeToolStripMenuItem.Name = "listeToolStripMenuItem";
+            this.listeToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.listeToolStripMenuItem.Text = "Liste";
+            // 
+            // listaIgračaToolStripMenuItem
+            // 
+            this.listaIgračaToolStripMenuItem.Name = "listaIgračaToolStripMenuItem";
+            this.listaIgračaToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.listaIgračaToolStripMenuItem.Text = "Lista Igrača";
+            this.listaIgračaToolStripMenuItem.Click += new System.EventHandler(this.ShowPlayerStatsList_Click);
+            // 
+            // listaUtakmiceToolStripMenuItem
+            // 
+            this.listaUtakmiceToolStripMenuItem.Name = "listaUtakmiceToolStripMenuItem";
+            this.listaUtakmiceToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.listaUtakmiceToolStripMenuItem.Text = "Lista Utakmice";
+            this.listaUtakmiceToolStripMenuItem.Click += new System.EventHandler(this.ShowMatchStatsList_Click);
             // 
             // cbTeams
             // 
@@ -91,6 +120,7 @@
             // 
             // pnlIgraci
             // 
+            this.pnlIgraci.AllowDrop = true;
             this.pnlIgraci.AutoScroll = true;
             this.pnlIgraci.BackColor = System.Drawing.Color.White;
             this.pnlIgraci.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -99,6 +129,8 @@
             this.pnlIgraci.Name = "pnlIgraci";
             this.pnlIgraci.Size = new System.Drawing.Size(1207, 738);
             this.pnlIgraci.TabIndex = 5;
+            this.pnlIgraci.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlIgraci_DragDrop);
+            this.pnlIgraci.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnlIgraci_DragEnter);
             // 
             // button1
             // 
@@ -110,47 +142,58 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenFavoritePlayers_Click);
             // 
-            // pictureBox3
+            // pbZ1
             // 
-            this.pictureBox3.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox3.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox3.Location = new System.Drawing.Point(1129, 33);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(65, 50);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
+            this.pbZ1.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ1.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ1.Location = new System.Drawing.Point(3, 2);
+            this.pbZ1.Name = "pbZ1";
+            this.pbZ1.Size = new System.Drawing.Size(65, 50);
+            this.pbZ1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbZ1.TabIndex = 6;
+            this.pbZ1.TabStop = false;
             // 
-            // pictureBox2
+            // pbZ2
             // 
-            this.pictureBox2.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox2.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox2.Location = new System.Drawing.Point(1058, 33);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(65, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.pbZ2.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ2.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ2.Location = new System.Drawing.Point(74, 2);
+            this.pbZ2.Name = "pbZ2";
+            this.pbZ2.Size = new System.Drawing.Size(65, 50);
+            this.pbZ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbZ2.TabIndex = 10;
+            this.pbZ2.TabStop = false;
             // 
-            // pictureBox1
+            // pbZ3
             // 
-            this.pictureBox1.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox1.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
-            this.pictureBox1.Location = new System.Drawing.Point(987, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(65, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.pbZ3.Image = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ3.InitialImage = global::UserInterface.Properties.Resources.prazna_zvijezda;
+            this.pbZ3.Location = new System.Drawing.Point(145, 2);
+            this.pbZ3.Name = "pbZ3";
+            this.pbZ3.Size = new System.Drawing.Size(65, 50);
+            this.pbZ3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbZ3.TabIndex = 11;
+            this.pbZ3.TabStop = false;
+            // 
+            // pnlZvijezde
+            // 
+            this.pnlZvijezde.AllowDrop = true;
+            this.pnlZvijezde.Controls.Add(this.pbZ1);
+            this.pnlZvijezde.Controls.Add(this.pbZ3);
+            this.pnlZvijezde.Controls.Add(this.pbZ2);
+            this.pnlZvijezde.Location = new System.Drawing.Point(981, 31);
+            this.pnlZvijezde.Name = "pnlZvijezde";
+            this.pnlZvijezde.Size = new System.Drawing.Size(214, 52);
+            this.pnlZvijezde.TabIndex = 12;
+            this.pnlZvijezde.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnlZvijezde_DragDrop);
+            this.pnlZvijezde.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnlZvijezde_DragEnter);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 856);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pnlZvijezde);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlIgraci);
             this.Controls.Add(this.label2);
@@ -164,9 +207,10 @@
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbZ3)).EndInit();
+            this.pnlZvijezde.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,13 +219,17 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaIgračaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaUtakmiceToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbTeams;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel pnlIgraci;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbZ1;
+        private System.Windows.Forms.PictureBox pbZ2;
+        private System.Windows.Forms.PictureBox pbZ3;
+        private System.Windows.Forms.Panel pnlZvijezde;
     }
 }
