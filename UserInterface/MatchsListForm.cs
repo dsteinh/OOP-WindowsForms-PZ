@@ -6,8 +6,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.User_controls;
@@ -17,15 +19,30 @@ namespace UserInterface
     public partial class MatchsListForm : Form
     {
         List<Match> matches;
+         ApiHelper apiHelper = new ApiHelper();
+
+        private const string HR = "hr";
+        private const string EN = "en";
         public MatchsListForm()
         {
+            SetKultura();
             InitializeComponent();
             
         }
-
+        private  void SetKultura()
+        {
+            if (apiHelper.LoadSettings().AppLanguage == Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(HR);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(EN);
+            }
+        }
         private void MatchsListForm_Load(object sender, EventArgs e)
         {
-            ApiHelper apiHelper = new ApiHelper();
+            apiHelper = new ApiHelper();
             matches = (List<Match>)apiHelper.GetAllMatches();
             ShowListOfMatches();
 

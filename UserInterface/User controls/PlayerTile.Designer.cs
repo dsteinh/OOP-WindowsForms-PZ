@@ -34,6 +34,7 @@
             this.imgFavorite = new System.Windows.Forms.PictureBox();
             this.lblImeIgraca = new System.Windows.Forms.Label();
             this.lblPozicija = new System.Windows.Forms.Label();
+            this.btnImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgFavorite)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,7 @@
             this.lblBrojDresa.TabIndex = 1;
             this.lblBrojDresa.Text = "25";
             this.lblBrojDresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             this.lblBrojDresa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblBrojDresa_MouseDown);
             // 
             // pictureBox1
@@ -61,6 +63,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblBrojDresa_MouseDown);
+            
             // 
             // lblKapetan
             // 
@@ -108,10 +111,21 @@
             this.lblPozicija.Text = "Pozicija";
             this.lblPozicija.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnImg
+            // 
+            this.btnImg.Location = new System.Drawing.Point(94, 207);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(40, 34);
+            this.btnImg.TabIndex = 16;
+            this.btnImg.Text = "Img";
+            this.btnImg.UseVisualStyleBackColor = true;
+            this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
+            // 
             // PlayerTile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImg);
             this.Controls.Add(this.lblImeIgraca);
             this.Controls.Add(this.lblPozicija);
             this.Controls.Add(this.lblKapetan);
@@ -136,5 +150,6 @@
         private System.Windows.Forms.PictureBox imgFavorite;
         private System.Windows.Forms.Label lblImeIgraca;
         private System.Windows.Forms.Label lblPozicija;
+        private System.Windows.Forms.Button btnImg;
     }
 }

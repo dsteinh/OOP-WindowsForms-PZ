@@ -41,80 +41,53 @@
             // 
             // pnlIgraci
             // 
-            this.pnlIgraci.AutoScroll = true;
-            this.pnlIgraci.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlIgraci.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pnlIgraci.Location = new System.Drawing.Point(0, 98);
+            resources.ApplyResources(this.pnlIgraci, "pnlIgraci");
             this.pnlIgraci.Name = "pnlIgraci";
-            this.pnlIgraci.Size = new System.Drawing.Size(605, 714);
-            this.pnlIgraci.TabIndex = 0;
-            this.pnlIgraci.WrapContents = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbZutiKartoni);
             this.groupBox1.Controls.Add(this.rbGolovi);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(593, 42);
-            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sortiranja";
             // 
             // rbZutiKartoni
             // 
-            this.rbZutiKartoni.AutoSize = true;
-            this.rbZutiKartoni.Location = new System.Drawing.Point(495, 16);
+            resources.ApplyResources(this.rbZutiKartoni, "rbZutiKartoni");
             this.rbZutiKartoni.Name = "rbZutiKartoni";
-            this.rbZutiKartoni.Size = new System.Drawing.Size(92, 20);
-            this.rbZutiKartoni.TabIndex = 1;
             this.rbZutiKartoni.TabStop = true;
-            this.rbZutiKartoni.Text = "Žuti kartoni";
             this.rbZutiKartoni.UseVisualStyleBackColor = true;
             this.rbZutiKartoni.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
             // 
             // rbGolovi
             // 
-            this.rbGolovi.AutoSize = true;
-            this.rbGolovi.Location = new System.Drawing.Point(422, 16);
+            resources.ApplyResources(this.rbGolovi, "rbGolovi");
             this.rbGolovi.Name = "rbGolovi";
-            this.rbGolovi.Size = new System.Drawing.Size(67, 20);
-            this.rbGolovi.TabIndex = 0;
             this.rbGolovi.TabStop = true;
-            this.rbGolovi.Text = "Golovi";
             this.rbGolovi.UseVisualStyleBackColor = true;
             this.rbGolovi.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(267, 60);
+            resources.ApplyResources(this.btnPrint, "btnPrint");
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 3;
-            this.btnPrint.Text = "Isprintaj";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // printPreviewDialog1
             // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
             this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
             // 
             // RankListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 812);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlIgraci);
             this.Name = "RankListForm";
-            this.Text = "RankListForm";
             this.Load += new System.EventHandler(this.RankListForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -2,6 +2,7 @@
 using DataLayer.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace WPF_Projekt
 {
@@ -27,6 +28,7 @@ namespace WPF_Projekt
         ApiHelper apiHelper = new ApiHelper();
         public string PlayerNumber { get; set; }
         public string PlayerName { get; set; }
+        public string ImgPath { get; set; }
         public PlayerTile()
         {
             InitializeComponent();
@@ -36,6 +38,12 @@ namespace WPF_Projekt
         {
             lblName.Text = PlayerName;
             lblPlayerNumber.Text = PlayerNumber;
+            if(apiHelper.GetImgPath(PlayerName) != null)
+            {
+                //apiHelper.GetImgPath(PlayerName), UriKind.Relative
+                Uri fileUri = new Uri($@"C:\Faks\Semestar 4\OOP\OOP-WindowsForms-PZ\DataLayer\Imgs\{Path.GetFileName(apiHelper.GetImgPath(PlayerName))}");
+                imgPlayer.Source = new BitmapImage(fileUri);
+            }
             
         }
 

@@ -118,72 +118,62 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlOmiljeniIgraci.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="lblTeam1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlOmiljeniIgraci.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="lblTeam1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 44</value>
   </data>
-  <data name="pnlOmiljeniIgraci.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1051, 345</value>
+  <data name="lblTeam1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 44</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlOmiljeniIgraci.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="lblTeam2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;pnlOmiljeniIgraci.Name" xml:space="preserve">
-    <value>pnlOmiljeniIgraci</value>
+  <data name="lblTeam2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 44</value>
   </data>
-  <data name="&gt;&gt;pnlOmiljeniIgraci.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblTeam2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 44</value>
   </data>
-  <data name="&gt;&gt;pnlOmiljeniIgraci.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;pnlOmiljeniIgraci.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 44</value>
   </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>854, 351</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 44</value>
   </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 46</value>
+  <data name="lblLokacija.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="lblLokacija.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 0</value>
   </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Spremi</value>
+  <data name="lblLokacija.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 44</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
+  <data name="lblLokacija.Text" xml:space="preserve">
+    <value>Location</value>
   </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblDolaznost.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="lblDolaznost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 88</value>
   </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 91</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1051, 409</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 133</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Omiljeni igrači</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FavoritePlayersForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 133</value>
   </data>
 </root>

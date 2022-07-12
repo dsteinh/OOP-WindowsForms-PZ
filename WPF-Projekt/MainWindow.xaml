@@ -4,36 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Projekt"
+        xmlns:props="clr-namespace:WPF_Projekt.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280"
+        Title="{x:Static props:Resources.mainTitle}" Height="720" Width="1280"
         Loaded="Window_Loaded"
         Closing="Window_Closing">
     
     <TabControl x:Name="MainTabControl">
-        <TabItem Header="Postavke" FontSize="15">
+        <TabItem Header="{x:Static props:Resources.settingsTab}" FontSize="15">
             <TabItem.Content>
                 <StackPanel>
-                    <Label FontWeight="Bold">Prvenstvo:</Label>
+                    <Label FontWeight="Bold" Content="{x:Static props:Resources.turnament}"/>
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton x:Name="rbMale">Muško</RadioButton>
-                        <RadioButton x:Name="rbFemale">Žensko</RadioButton>
+                        <RadioButton x:Name="rbMale" Content="{x:Static props:Resources.male}"></RadioButton>
+                        <RadioButton x:Name="rbFemale" Content="{x:Static props:Resources.female}"></RadioButton>
                     </StackPanel>
-                    <Label FontWeight="Bold">Jezik:</Label>
+                    <Label FontWeight="Bold" Content="{x:Static props:Resources.lang}"></Label>
                     <StackPanel Orientation="Horizontal">
                         <RadioButton x:Name="rbHRV">HRV</RadioButton>
                         <RadioButton x:Name="rbENG">ENG</RadioButton>
                     </StackPanel>
-                    <Label FontWeight="Bold">Rezolucija:</Label>
+                    <Label FontWeight="Bold" Content="{x:Static props:Resources.resolution}"></Label>
                     <StackPanel Orientation="Vertical">
                         <RadioButton x:Name="rbFscr">Fullscreen</RadioButton>
                         <RadioButton x:Name="rbHD">1280 x 720</RadioButton>
                         <RadioButton x:Name="rbVGA">640 x 480</RadioButton>
                     </StackPanel>
-                    <Button x:Name="btnSave" HorizontalAlignment="Left" Margin="5" Padding="8" Click="btnSave_Click">Spremi</Button>
+                    <Button x:Name="btnSave" HorizontalAlignment="Left" Margin="5" Padding="8" Click="btnSave_Click" Content="{x:Static props:Resources.save}"></Button>
                 </StackPanel>
             </TabItem.Content>
         </TabItem>
-        <TabItem x:Name="TabTeams" Header="Timovi" FontSize="15" Height="24" VerticalAlignment="Top">
+        <TabItem x:Name="TabTeams" Header="{x:Static props:Resources.teamsTab}" FontSize="15" Height="24" VerticalAlignment="Top">
             <TabItem.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -57,11 +58,11 @@
                         </Button>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Label FontWeight="Bold">Omiljeni Tim:</Label>
+                        <Label FontWeight="Bold" Content="{x:Static props:Resources.favoriteTeam}"></Label>
                         <ComboBox Name="cbFavoriteTeam" HorizontalAlignment="Left" Width="150" SelectionChanged="cbFavoriteTeam_SelectionChanged"></ComboBox>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2">
-                        <Label FontWeight="Bold">Drugi Tim:</Label>
+                        <Label FontWeight="Bold" Content="{x:Static props:Resources.otherTeam}"></Label>
                         <ComboBox Name="cbOtherTeam" HorizontalAlignment="Left" Width="150"></ComboBox>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1">

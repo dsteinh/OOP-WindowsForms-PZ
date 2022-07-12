@@ -96,17 +96,35 @@
     <Compile Include="User controls\PlayerTile.Designer.cs">
       <DependentUpon>PlayerTile.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FavoritePlayersForm.en.resx">
+      <DependentUpon>FavoritePlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FavoritePlayersForm.resx">
       <DependentUpon>FavoritePlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MatchsListForm.en.resx">
+      <DependentUpon>MatchsListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MatchsListForm.resx">
       <DependentUpon>MatchsListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RankListForm.dje.resx">
+      <DependentUpon>RankListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RankListForm.en.resx">
+      <DependentUpon>RankListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RankListForm.resx">
       <DependentUpon>RankListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.en.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -115,6 +133,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MatchListElement.en.resx">
+      <DependentUpon>MatchListElement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User controls\MatchListElement.resx">
       <DependentUpon>MatchListElement.cs</DependentUpon>

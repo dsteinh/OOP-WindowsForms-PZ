@@ -3,8 +3,11 @@ using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +16,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace WPF_Projekt
 {
@@ -33,8 +36,20 @@ namespace WPF_Projekt
 
         public PlayerDetails()
         {
+            SetCulture(apiHelper.LoadSettings().AppLanguage);
             InitializeComponent();
             InitBackGroundWorker();
+        }
+        private void SetCulture(Language lang)
+        {
+            if (lang == DataLayer.Model.Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("hr");
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            }
         }
         private void InitBackGroundWorker()
         {
@@ -61,6 +76,12 @@ namespace WPF_Projekt
             lblGoals.Text = goals.ToString();
             lblYellowCards.Text = yellow.ToString();
             lblKapetan.Visibility = player.Captain ? Visibility.Visible : Visibility.Hidden;
+            if (apiHelper.GetImgPath(playerTile.PlayerName) != null)
+            {
+                //apiHelper.GetImgPath(PlayerName), UriKind.Relative
+                Uri fileUri = new Uri($@"C:\Faks\Semestar 4\OOP\OOP-WindowsForms-PZ\DataLayer\Imgs\{Path.GetFileName(apiHelper.GetImgPath(playerTile.PlayerName))}");
+                imgPlayer.Source = new BitmapImage(fileUri);
+            }
         }
 
         public PlayerDetails(Match match, PlayerTile playerTile) : this()

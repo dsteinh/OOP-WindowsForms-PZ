@@ -6,8 +6,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.User_controls;
@@ -17,9 +19,26 @@ namespace UserInterface
     public partial class RankListForm : Form
     {
         List<Player> allPlayers;
+         ApiHelper apiHelper = new ApiHelper();
+
+        private const string HR = "hr";
+        private const string EN = "en";
         public RankListForm()
         {
+            SetKultura();
             InitializeComponent();
+        }
+
+        private  void SetKultura()
+        {
+            if (apiHelper.LoadSettings().AppLanguage == Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(HR);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(EN);
+            }
         }
 
         private void RankListForm_Load(object sender, EventArgs e)

@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.User_controls;
@@ -16,12 +18,25 @@ namespace UserInterface
     public partial class FavoritePlayersForm : Form
     {
         ApiHelper apiHelper = new ApiHelper();
+        private const string HR = "hr";
+        private const string EN = "en";
         public FavoritePlayersForm()
         {
+            SetKultura();
             InitializeComponent();
             InitializeAll();
         }
-
+        private void SetKultura()
+        {
+            if (apiHelper.LoadSettings().AppLanguage == Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(HR);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(EN);
+            }
+        }
         public void InitializeAll()
         {
 
@@ -32,7 +47,8 @@ namespace UserInterface
                 Position = x.Position.ToString(),
                 IsCapetan = x.Captain,
                 IsFavorite = x.IsFavorite,
-                IsReadOnly = true
+                IsReadOnly = true,
+                ImgPath = apiHelper.GetImgPath(x.Name)
             }));
             foreach (Control c in pnlOmiljeniIgraci.Controls)
             {

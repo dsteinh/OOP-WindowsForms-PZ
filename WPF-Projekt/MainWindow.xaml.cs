@@ -4,9 +4,11 @@ using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +27,8 @@ namespace WPF_Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const string MessageBoxTitle = "Are you sure?";
+        private const string MessageBoxMessage = "Closing Confirmation";
         ApiHelper apiHelper = new ApiHelper();
         Settings settings = new Settings();
         Team favoriteTeam = new Team();
@@ -32,8 +36,21 @@ namespace WPF_Projekt
         List<Team> _teams;
         public MainWindow()
         {
+            SetCulture(apiHelper.LoadSettings().AppLanguage);
             InitializeComponent();
             InitBackGroundWorker();
+        }
+
+        private void SetCulture(Language lang)
+        {
+            if (lang == DataLayer.Model.Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("hr");
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            }
         }
 
         private void InitBackGroundWorker()
@@ -176,6 +193,7 @@ namespace WPF_Projekt
             try
             {
                 UpdateSettings();
+                SetCulture(settings.AppLanguage);
                 apiHelper.SaveSettings(settings, ApiHelper.SettingsPath);
                 SetResolution();
                 bkgWorker.RunWorkerAsync();
@@ -292,7 +310,7 @@ namespace WPF_Projekt
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Closing Confirmation", System.Windows.MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(MessageBoxTitle, MessageBoxMessage, System.Windows.MessageBoxButton.YesNo);
          
             if (messageBoxResult == MessageBoxResult.No)
             {

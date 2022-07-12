@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,10 @@ namespace UserInterface.User_controls
         public bool IsFavorite { get; set; }
         public bool IsReadOnly { get; set; } = false;
         public bool IsSelected { get; set; } = false;
+        public string ImgPath { get; set; }
 
         ApiHelper apiHelper = new ApiHelper();
+        
         public PlayerTile()
         {
             InitializeComponent();
@@ -45,7 +48,15 @@ namespace UserInterface.User_controls
             lblPozicija.Text = Position;
             lblKapetan.Text = IsCapetan ? "K" : "";
             imgFavorite.Image = IsFavorite ? Properties.Resources.puna_zvijezda : Properties.Resources.prazna_zvijezda;
-            //ApiHelper.AllPlayers.ToList().ForEach(p => )
+            if (File.Exists(ImgPath))
+            {
+                pictureBox1.Image = Image.FromFile(ImgPath);
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.dres1;
+            }
+
         }
 
         private void imgFavorite_Click(object sender, EventArgs e)
@@ -133,7 +144,7 @@ namespace UserInterface.User_controls
 
         private void lblBrojDresa_MouseDown(object sender, MouseEventArgs e)
         {
-           StartDnD(this);
+            StartDnD(this);
         }
 
         private void StartDnD(PlayerTile playerTile)
@@ -146,6 +157,32 @@ namespace UserInterface.User_controls
                 RefreshFavoritePlayers();
             }
 
+        }
+
+        
+        private string ChooseImg()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Pictures|*.bmp;*.jpg;*.jpeg;*.png;|All files|*.*";
+            ofd.InitialDirectory = Application.StartupPath;
+
+            //ofd.SafeFileName - ime datoteke i ekstenzija
+            //ofd.FileName - abs putanja i datoteka
+            if (ofd.ShowDialog() == DialogResult.OK)
+                return ofd.FileName;
+
+            return null;
+        }
+
+        
+
+        private void btnImg_Click(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            PlayerTile thisPlayer = (PlayerTile)b.Parent;
+            string path = ChooseImg();
+            thisPlayer.pictureBox1.Image = Image.FromFile(apiHelper.SavePlayerImg(path, thisPlayer.PlayerName));
+            RefreshFavoritePlayers();
         }
     }
 }

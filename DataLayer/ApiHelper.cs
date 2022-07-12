@@ -27,6 +27,8 @@ namespace DataLayer
         private const string SettPath = @"..\..\..\DataLayer\Endpoints\settings.txt";
         private const string FavTeamPath = @"..\..\..\DataLayer\Endpoints\FavoriteTeam.txt";
 
+        private const string ImgDir = @"..\..\..\DataLayer\Imgs\";
+
         public int GetTeamWins(Team team)
         {
             List<Match> allMatches = ApiLoader<Match>.GetApiDataSet($"{GetCorrectPath()[1]}{team.Code}");
@@ -54,7 +56,13 @@ namespace DataLayer
             return cards;
         }
 
-        
+        public string GetImgPath(string name)
+        {
+            string[] files = Directory.GetFiles(ImgDir);
+            //throw new Exception((Path.GetFileNameWithoutExtension(files[0])).ToString());
+            return files.FirstOrDefault(f => Path.GetFileNameWithoutExtension(f).Equals(name));
+        }
+
         public int GetGoalsByMatch(Match match, Player player)
         {
             int goals = 0;
@@ -167,6 +175,15 @@ namespace DataLayer
 
             }
         }
+
+        public string SavePlayerImg(string path, string playerName)
+        {
+
+            string ext = Path.GetExtension(path);
+            File.Copy(path, $@"{ImgDir}{playerName}{ext}");
+            return $@"{ImgDir}{playerName}{ext}";
+        }
+
         public void SetGoals()
         {
             IList<Match> matches = GetAllMatches();

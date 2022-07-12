@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -18,13 +19,18 @@ namespace UserInterface
 {
     public partial class MainForm : Form
     {
+        private const string HR = "hr";
+        private const string EN = "en";
+        private const string ImgDir = @"..\..\..\DataLayer\Imgs";
         ApiHelper apiHelper = new ApiHelper();
         BackgroundWorker bkgWorker;
 
         Team favoriteTeam;
         public MainForm()
         {
+            SetKultura();
             InitializeAll();
+
         }
 
         internal void InitializeAll()
@@ -54,7 +60,8 @@ namespace UserInterface
                     Number = p.ShirtNumber.ToString(),
                     Position = p.Position.ToString(),
                     IsCapetan = p.Captain,
-                    IsFavorite = p.IsFavorite
+                    IsFavorite = p.IsFavorite,
+                    ImgPath = apiHelper.GetImgPath(p.Name)
                 });
 
             }
@@ -168,6 +175,18 @@ namespace UserInterface
 
         }
 
+        internal void SetKultura()
+        {
+            if (apiHelper.LoadSettings().AppLanguage == Language.CRO)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(HR);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(EN);
+            }
+        }
+
         private void cbTeams_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
@@ -235,10 +254,7 @@ namespace UserInterface
             matchsListForm.ShowDialog(this);
         }
 
-        private void pnlIgraci_DragDrop(object sender, DragEventArgs e)
-        {
-
-        }
+      
 
         private void pnlIgraci_DragEnter(object sender, DragEventArgs e)
         {
@@ -247,7 +263,7 @@ namespace UserInterface
 
         private void pnlZvijezde_DragDrop(object sender, DragEventArgs e)
         {
-           
+
             foreach (PlayerTile pt in pnlIgraci.Controls)
             {
                 if (pt.IsSelected)
